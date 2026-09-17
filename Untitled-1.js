@@ -86,35 +86,35 @@ const loveStoryConfig = {
       title: "The First Hello 💬",
       badge: "The Beginning",
       description: "ik normal day jo ena special bn geya , oh insaan jo menu ena special feel kronda....",
-      image: "assets/photos/photo1.png"
+      image: "photo1.png"
     },
     {
       date: "Day 2",
       title: "The First Long Conversation 🌙",
       badge: "Late Night Talks",
       description: "te thoda majk jide te menu ena yaakin ho geya , odo sochya v ni se tusi ene special bn jo ge...",
-      image: "assets/photos/photo2.png"
+      image: "photo2.png"
     },
     {
       date: "Day 3",
       title: "Smiling Because of You 😊",
       badge: "Realization",
       description: "Catching myself staring at my phone and smiling like a complete dork whenever you messaged.",
-      image: "assets/photos/photo3.png"
+      image: "photo3.png"
     },
     {
       date: "Day 4",
       title: "The Memory I Keep Replaying 🎬",
       badge: "Unforgettable",
       description: "apniya calls your second step ho mera lyi sab too cute chijj aa thodi cute ji awaj jo ki menu sab to jada pyari lagdi aa te mera din bnon lyi best aa...",
-      image: "assets/photos/photo4.png"
+      image: "photo4.png"
     },
     {
       date: "Today",
       title: "The Day I Realized… ❤️",
       badge: "Forever Moment",
       description: "today i realized ki tusi schi bhot special bn ge , me nhi reha chodi thode bina i want you with me mera cute jee baachaa...",
-      image: "assets/photos/photo1.png"
+      image: "photo1.png"
     }
   ],
 
@@ -195,7 +195,7 @@ const loveStoryConfig = {
     buttonText: "One Last Thing 👀",
     modalTitle: "P.S. High Five! ✋❤️",
     modalMessage: "If you're smiling right now… mission accomplished. You are truly wonderful!",
-    photo: "assets/photos/photo4.png"
+    photo: "photo4.png"
   }
 };
 
