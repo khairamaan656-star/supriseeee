@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="pageTitle">Our Little Love Story ❤️</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            blush: '#FFF0F3',
+            rose: {
+              100: '#FFE5EC',
+              200: '#FFCCD5',
+              300: '#FFB3C1',
+              400: '#FF8FA3',
+              500: '#FF758F',
+              600: '#FF4D6D',
+              700: '#C9184A',
+            },
+            burgundy: '#800020',
+            cream: '#FFFDF9',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body class="antialiased text-gray-800 bg-blush">
+
+  <!-- Floating Audio Widget -->
+  <div class="audio-widget">
+    <button id="musicToggleBtn" onclick="window.audioController && window.audioController.toggleBackgroundMusic()"
+      class="flex items-center gap-2 text-xs md:text-sm font-medium px-3 py-1.5 rounded-full transition-all text-rose-700">
+      <svg id="musicIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="1" y1="1" x2="23" y2="23"></line>
+        <path d="M9 9v9"></path>
+        <circle cx="6" cy="18" r="3"></circle>
+        <path d="M12 6.5L19 5v6.5"></path>
+      </svg>
+      <span id="musicLabel">Music: Paused 🔇</span>
+    </button>
+  </div>
+
+  <!-- Main Container -->
+  <main class="relative overflow-hidden">
+
+    <!-- ==================================================================== -->
+    <!-- SECTION 1: LANDING SCREEN — THE FIRST SURPRISE                       -->
+    <!-- ==================================================================== -->
+    <section id="landingSection"
+      class="relative min-h-screen flex flex-col items-center justify-center p-6 bg-romantic-gradient overflow-hidden">
+      <!-- Background Particles Canvas -->
+      <canvas id="heartsCanvas" class="absolute inset-0 pointer-events-none z-0"></canvas>
+
+      <div class="relative z-10 text-center max-w-lg mx-auto flex flex-col items-center">
+        <!-- Floating Heart Header Badge -->
+        <div
+          class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-pink-200 text-rose-600 text-sm font-semibold shadow-sm mb-8 animate-float">
+          <span>✨</span> A Digital Love Story <span>❤️</span>
+        </div>
+
+        <h1 class="font-handwriting text-5xl md:text-7xl text-burgundy mb-3 tracking-wide">
+          oyeee <span class="mera nona baachee">mera nona baachee</span>… 💌
+        </h1>
+        <p class="text-base md:text-xl text-gray-600 font-light mb-10">
+          I made something special, just for you.
+        </p>
+
+        <!-- 3D Gift Envelope Card -->
+        <div id="landingEnvelope" class="envelope-wrapper mb-10">
+          <div class="envelope-flap"></div>
+          <div class="envelope-letter">
+            <span class="text-3xl">💌</span>
+            <p class="font-handwriting text-xl text-burgundy mt-1">Tap to unfold my heart</p>
+          </div>
+          <div class="envelope-pocket"></div>
+        </div>
+
+        <button id="openHeartBtn"
+          class="px-8 py-4 rounded-full bg-gradient-to-r from-rose-500 to-rose-700 text-white font-semibold text-lg shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all animate-heartbeat flex items-center gap-3">
+          <span>Open My Heart ❤️</span>
+        </button>
+      </div>
+
+      <div class="absolute bottom-6 text-center text-xs text-rose-400 font-medium z-10">
+        Scroll down to begin our journey ↓
+      </div>
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- SECTION 2: PERSONAL MESSAGE (TYPEWRITER)                             -->
+    <!-- ==================================================================== -->
+    <section id="personalMessageSection"
+      class="relative py-24 px-6 bg-cream border-t border-b border-pink-100 min-h-[70vh] flex items-center justify-center">
+      <div class="max-w-3xl mx-auto text-center relative z-10">
+        <div class="text-xs uppercase tracking-widest text-rose-500 font-bold mb-3">
+          A Message From My Heart 💌
+        </div>
+
+        <h2 class="font-handwriting text-4xl md:text-5xl text-burgundy mb-8">
+          kuch hai jo me thonu dsna se bhot time too....
+        </h2>
+
+        <div class="glass-card p-8 md:p-12 rounded-3xl shadow-xl relative border border-pink-100">
+          <span class="absolute -top-4 -left-4 text-4xl animate-bounce">💖</span>
+          <span class="absolute -bottom-4 -right-4 text-4xl animate-pulse">✨</span>
+
+          <p id="typewriterText"
+            class="text-lg md:text-2xl text-gray-700 leading-relaxed font-light font-body min-h-[120px]">
+            <!-- Typewriter text inserted via JS -->
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ==================================================================== -->
+    <!-- SECTION 4: "WHY YOU?" SECTION                                        -->
+    <!-- ==================================================================== -->
+    <section id="whyYouSection" class="py-24 px-6 bg-romantic-gradient relative">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-16">
+          <span class="text-xs uppercase tracking-widest text-rose-500 font-bold">Reasons My Heart Chose You ❤️</span>
+          <h2 class="font-handwriting text-5xl md:text-6xl text-burgundy mt-2">
+            Why You?
+          </h2>
+          <p class="text-gray-600 mt-2">Click any card to read why you mean so much to me</p>
+        </div>
+
+        <div id="whyYouGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Cards rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- SECTION 5: INTERACTIVE LOVE TIMELINE                                 -->
+    <!-- ==================================================================== -->
+    <section id="timelineSection" class="py-24 px-6 bg-cream relative">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-16">
+          <span class="text-xs uppercase tracking-widest text-rose-500 font-bold">Our Journey ⏳</span>
+          <h2 class="font-handwriting text-5xl md:text-6xl text-burgundy mt-2">
+            How We Became Us…
+          </h2>
+        </div>
+
+        <div class="relative">
+          <div class="timeline-line"></div>
+          <div id="timelineContainer" class="space-y-12">
+            <!-- Timeline items rendered via JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- SECTION 6: CUTE INTERACTIVE MINI-GAME                                -->
+    <!-- ==================================================================== -->
+    <section id="miniGameSection"
+      class="py-24 px-6 bg-romantic-gradient relative border-t border-b border-pink-100 min-h-[60vh] flex items-center justify-center">
+      <div class="max-w-2xl mx-auto text-center relative z-10">
+        <span class="text-xs uppercase tracking-widest text-rose-500 font-bold">A Playful Question 👀</span>
+        <h2 class="font-handwriting text-4xl md:text-5xl text-burgundy mt-3 mb-6">
+          Okay… one tiny question before I continue
+        </h2>
+
+        <div class="glass-card p-8 md:p-12 rounded-3xl shadow-xl border border-pink-200 relative">
+          <p class="text-xl md:text-2xl font-medium text-gray-800 mb-10">
+            Do you think someone has a little crush on you? 🙈
+          </p>
+
+          <div class="flex items-center justify-center gap-6 relative min-h-[80px]">
+            <button id="gameYesBtn"
+              class="px-8 py-4 rounded-full bg-gradient-to-r from-rose-500 to-rose-700 text-white font-semibold text-lg shadow-lg hover:shadow-2xl transition-all">
+              YES ❤️
+            </button>
+            <button id="gameNoBtn"
+              class="runaway-btn px-8 py-4 rounded-full bg-gray-200 text-gray-700 font-semibold text-lg shadow hover:bg-gray-300 transition-all">
+              NO 😏
+            </button>
+          </div>
+
+          <div id="gameResult"
+            class="hidden mt-8 p-4 rounded-2xl bg-pink-100 border border-pink-300 text-rose-700 font-handwriting text-3xl animate-bounce">
+            I knew you'd figure it out. 😌❤️
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- SECTION 7: FUTURE DREAMS SECTION                                     -->
+    <!-- ==================================================================== -->
+    <section id="futureDreamsSection" class="py-24 px-6 bg-dreamy-gradient relative">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <span class="text-xs uppercase tracking-widest text-rose-500 font-bold">Possibilities & Wishes 🌙</span>
+          <h2 class="font-handwriting text-5xl md:text-6xl text-burgundy mt-2">
+            If You Let Me Dream A Little…
+          </h2>
+          <p class="text-gray-600 mt-2">Beautiful moments I'd love to share with you</p>
+        </div>
+
+        <div id="dreamsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Dream cards rendered via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- SECTION 8: THE BUILD-UP                                              -->
+    <!-- ==================================================================== -->
+    <section id="buildUpSection"
+      class="py-28 px-6 bg-cinematic-dark text-white relative min-h-[80vh] flex flex-col items-center justify-center">
+      <div class="max-w-3xl mx-auto text-center relative z-10">
+        <div id="buildUpTextContainer" class="space-y-4 mb-10 min-h-[160px]">
+          <p class="text-2xl font-handwriting text-rose-300">Click continue to read my quiet thoughts…</p>
+        </div>
+
+        <button id="buildUpContinueBtn"
+          class="px-8 py-4 rounded-full bg-gradient-to-r from-rose-600 to-rose-800 text-white font-semibold text-lg shadow-2xl hover:scale-105 transition-all animate-pulse">
+          Continue ❤️
+        </button>
+      </div>
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- SECTION 9: THE BIG PROPOSAL 💍                                      -->
+    <!-- ==================================================================== -->
+    <section id="proposalSection"
+      class="relative py-32 px-6 bg-cinematic-dark text-white min-h-screen flex flex-col items-center justify-center overflow-hidden">
+      <!-- Falling Rose Petals Canvas -->
+      <canvas id="proposalPetalsCanvas" class="absolute inset-0 pointer-events-none z-0"></canvas>
+
+      <div class="relative z-10 max-w-2xl mx-auto text-center">
+        <!-- Heartbeat Glowing Icon -->
+        <div
+          class="w-24 h-24 mx-auto mb-8 rounded-full bg-gradient-to-br from-rose-500 to-burgundy flex items-center justify-center text-4xl shadow-2xl animate-heartbeat">
+          💍
+        </div>
+
+        <p class="text-pink-300 font-handwriting text-2xl md:text-3xl mb-4">
+          I think you already know what I'm about to say…
+        </p>
+
+        <h1
+          class="text-5xl md:text-7xl font-bold font-handwriting text-transparent bg-clip-text bg-gradient-to-r from-pink-200 via-rose-300 to-red-400 mb-6 drop-shadow">
+          Will You Be Mine? ❤️
+        </h1>
+
+        <p class="text-gray-300 font-light text-base md:text-lg mb-12">
+          Not just for a moment… but let's see where our story takes us.
+        </p>
+
+        <!-- Response Action Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+          <button id="proposalYesBtn"
+            class="w-full sm:w-auto px-10 py-5 rounded-full bg-gradient-to-r from-rose-500 to-rose-700 text-white text-xl font-bold shadow-2xl hover:scale-110 transition-all border border-pink-400">
+            YES ❤️
+          </button>
+          <button id="proposalTimeBtn"
+            class="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 backdrop-blur-md text-pink-200 text-base font-medium hover:bg-white/20 transition-all border border-pink-300/30">
+            I Need A Little Time 🥺
+          </button>
+        </div>
+
+        <!-- YES Response Celebration -->
+        <div id="proposalYesResult"
+          class="hidden mt-12 p-8 rounded-3xl glass-card-dark text-center animate-fade-in border border-rose-500/40">
+          <span class="text-5xl">🎉✨❤️</span>
+          <h3 class="font-handwriting text-4xl text-rose-300 mt-4 mb-2">
+            You just made my heart the happiest place in the world! ❤️
+          </h3>
+          <p class="text-pink-100 font-light text-lg">
+            This is only the beginning of our story…
+          </p>
+        </div>
+
+        <!-- TIME Response Understanding -->
+        <div id="proposalTimeResult"
+          class="hidden mt-12 p-8 rounded-3xl glass-card-dark text-center animate-fade-in border border-pink-300/20">
+          <span class="text-4xl">🤗💖</span>
+          <h3 class="font-handwriting text-3xl text-pink-200 mt-3 mb-2">
+            Take All The Time You Need
+          </h3>
+          <p class="text-gray-300 font-light text-sm max-w-md mx-auto">
+            There is no rush at all. My heart will always be open for you, whenever you're ready. Thank you for reading
+            my heart today.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- SECTION 10: PERSONALIZED FINAL MESSAGE                               -->
+    <!-- ==================================================================== -->
+    <section id="finalLetterSection" class="py-24 px-6 bg-romantic-gradient relative">
+      <div class="max-w-3xl mx-auto">
+        <div class="glass-card p-10 md:p-16 rounded-3xl shadow-2xl border border-pink-200 relative bg-cream/90">
+          <div class="text-center mb-8">
+            <span class="text-3xl">📜</span>
+            <h3 id="letterSalutation" class="font-handwriting text-4xl text-burgundy mt-2">
+              Dear <span class="boy-name">Alex</span>,
+            </h3>
+          </div>
+
+          <div id="letterBody" class="space-y-4">
+            <!-- Paragraphs rendered via JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================== -->
+    <!-- SECTION 11: FINAL INTERACTIVE SURPRISE & QR CODE                    -->
+    <!-- ==================================================================== -->
+    <section id="finalSurpriseSection" class="py-20 px-6 bg-cream text-center border-t border-pink-200">
+      <div class="max-w-xl mx-auto">
+        <p class="text-lg font-handwriting text-rose-600 mb-2">P.S. There's one more surprise…</p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-4">
+          <button id="secretSurpriseBtn"
+            class="px-8 py-3.5 rounded-full bg-gradient-to-r from-rose-500 to-rose-700 text-white font-semibold text-base shadow-lg hover:scale-105 transition-all">
+            One Last Thing 👀
+          </button>
+          <button id="showQrBtn"
+            class="px-6 py-3.5 rounded-full bg-white text-rose-600 border border-rose-300 font-semibold text-base shadow hover:bg-rose-50 transition-all flex items-center gap-2">
+            <span>Share / Scan QR</span> 📱
+          </button>
+        </div>
+
+        <p class="text-xs text-gray-400 mt-8">Made with endless love ❤️</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================================================================== -->
+  <!-- MODALS LIGHTBOX                                                      -->
+  <!-- ==================================================================== -->
+
+  <!-- 1. Photo Modal -->
+  <div id="photoModal" class="modal-overlay">
+    <div class="modal-content relative p-6 md:p-8">
+      <button class="modal-close-btn absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-2xl font-bold">
+        &times;
+      </button>
+      <img id="modalPhotoImg" src="" alt="" class="w-full h-80 object-cover rounded-2xl shadow mb-4" />
+      <div class="flex items-center justify-between mb-2">
+        <h3 id="modalPhotoTitle" class="font-handwriting text-3xl text-burgundy"></h3>
+        <span id="modalPhotoDate" class="text-xs bg-rose-100 text-rose-600 px-3 py-1 rounded-full font-semibold"></span>
+      </div>
+      <p id="modalPhotoCaption" class="text-gray-600 text-sm leading-relaxed mt-2 font-body"></p>
+    </div>
+  </div>
+
+  <!-- 2. Reason Modal -->
+  <div id="reasonModal" class="modal-overlay">
+    <div class="modal-content relative p-8 text-center max-w-md">
+      <button class="modal-close-btn absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-2xl font-bold">
+        &times;
+      </button>
+      <div class="text-4xl mb-3">💖</div>
+      <h3 id="modalReasonTitle" class="font-handwriting text-3xl text-burgundy mb-4"></h3>
+      <p id="modalReasonMessage" class="text-gray-700 text-base leading-relaxed font-body"></p>
+    </div>
+  </div>
+
+  <!-- 3. Secret Surprise Modal -->
+  <div id="surpriseModal" class="modal-overlay">
+    <div class="modal-content relative p-8 text-center max-w-lg">
+      <button class="modal-close-btn absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-2xl font-bold">
+        &times;
+      </button>
+      <div class="text-4xl mb-2">🎉✨</div>     <h3 class="font-handwriting text-4xl text-burgundy mb-2">Mission Accomplished! ❤️</h3>
+      <p class="text-gray-600 text-sm mb-6">If you're smiling right now… my heart is completely full.</p>
+      <img src="assets/photos/photo4.png" alt="Secret Surprise"
+        class="w-full h-64 object-cover rounded-2xl shadow-md mb-4" />
+      <p class="text-rose-600 font-handwriting text-2xl">Always cheering for you! 🥰</p>
+    </div>
+  </div>
+
+  <!-- 4. QR Code Modal -->
+  <div id="qrModal" class="modal-overlay">
+    <div class="modal-content relative p-8 text-center max-w-sm">
+      <button class="modal-close-btn absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-2xl font-bold">
+        &times;
+      </button>
+      <h3 class="font-handwriting text-3xl text-burgundy mb-2">Scan & Open 📱</h3>
+      <p class="text-gray-500 text-xs mb-6">Scan this QR code to view this love story on any mobile device</p>
+      <div id="qrCodeCanvas" class="my-4"></div>
+      <p class="text-xs text-rose-500 font-medium">Send this link to someone special ❤️</p>
+    </div>
+  </div>
+
+  <!-- JavaScript App Logic -->
+  <script src="js/config.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/audioController.js"></script>
+  <script src="js/components.js"></script>
+</body>
+
+</html>
